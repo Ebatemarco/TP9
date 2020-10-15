@@ -8,27 +8,25 @@
 #include <stdlib.h>
 #include "Definiciones.h"
 
-/*
-int EsPalindromo (char* Palindromo, int cant)
+
+int EsPalindromo (char* Palindromo, int inicio, int final) 
 {
-    if(cant<=1)
+    if (inicio >= final) 
+        return TRUE;
+    
+    if (Palindromo[inicio] == Palindromo[final]) 
     {
-        return(TRUE);
+        return EsPalindromo(Palindromo, inicio + 1, final - 1);
+    } 
+    else 
+    {
+        return FALSE;
     }
-    else if()
-    {
-        return();
-    }    
-    else
-    {
-        return;
-    }                
 }
-*/
 
 int EsPalindromoNoRecursivo (char* Frase, int LongFrase)
 {
-    int inicio, final;
+    int inicio = 0, final;
     final = LongFrase; 
     if(LongFrase<=1)
         return(TRUE);

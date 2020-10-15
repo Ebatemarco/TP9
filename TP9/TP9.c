@@ -21,18 +21,25 @@
 int main(void)
 {
     char str[LONG];
-    int n_elements=0;
+    int n_elements = 0;
     int Pal;
+    int cero =0;
+    char c;
     
-    //Esto puede ser una funcion
-    while(getchar() != '\n')
+    
+    while((c=getchar()) != '\n')
     {
-        str[n_elements]=getchar(); //falta que ignore espacios 
+        if( ( (c>='A') && (c<='Z') )|| ( (c>='a') && (c<= 'z') ) )
+        {    
+        str[n_elements] = c; 
         n_elements++;
+        }
     }
     n_elements--;
     
-    Pal=EsPalindromoNoRecursivo(str[0], n_elements);
+    Pal = EsPalindromo(str, cero ,n_elements);
+    
+    //Pal = EsPalindromoNoRecursivo(str, n_elements);
     
     if(Pal==1)
         printf("TRUE");

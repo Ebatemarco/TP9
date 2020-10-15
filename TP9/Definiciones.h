@@ -15,7 +15,9 @@
 #define FALSE 0
 #define LONG 50
 
-//int EsPalindromo (*char Palindromo, int cant);
+int EsPalindromo (char* Palindromo, int inicio, int final);
 
 int EsPalindromoNoRecursivo (char* Frase, int LongFrase);
+
+
 
