@@ -34,7 +34,7 @@ int main(void)
         str[n_elements]=getchar(); //falta que ignore espacios 
         n_elements++;
     }
-    //str[n_elements+1]='\0';
+    n_elements--;
     
     Pal=EsPalindromoNoRecursivo(str[0], n_elements);
     
