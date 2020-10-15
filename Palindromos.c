@@ -26,7 +26,7 @@ int EsPalindromo (char* Palindromo, int inicio, int final)
 
 int EsPalindromoNoRecursivo (char* Frase, int LongFrase)
 {
-    int inicio, final;
+    int inicio = 0, final;
     final = LongFrase; 
     if(LongFrase<=1)
         return(TRUE);

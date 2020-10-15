@@ -35,12 +35,11 @@ int main(void)
         n_elements++;
         }
     }
-
     n_elements--;
     
-    //Pal = EsPalindromo(str, cero ,n_elements);
+    Pal = EsPalindromo(str, cero ,n_elements);
     
-    Pal = EsPalindromoNoRecursivo(str, n_elements);
+    //Pal = EsPalindromoNoRecursivo(str, n_elements);
     
     if(Pal==1)
         printf("TRUE");
