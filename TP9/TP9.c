@@ -24,18 +24,9 @@ int main(void)
     int n_elements = 0;
     int Pal;
     int cero =0;
-    char c;
     
     
-    while((c=getchar()) != '\n')
-    {
-        if( ( (c>='A') && (c<='Z') )|| ( (c>='a') && (c<= 'z') ) )
-        {    
-        str[n_elements] = c; 
-        n_elements++;
-        }
-    }
-    n_elements--;
+    n_elements= get_string (str, n_elements);
     
     Pal = EsPalindromo(str, cero ,n_elements);
     
