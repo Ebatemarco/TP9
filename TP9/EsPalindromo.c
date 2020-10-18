@@ -11,14 +11,14 @@
 
 int EsPalindromo (char* Palindromo, int inicio, int final) 
 {
-    if (inicio >= final) 
+    if (inicio >= final) //si ya revisamos todas las letras es Palindromo
         return TRUE;
     
-    if (Palindromo[inicio] == Palindromo[final]) 
+    if (Palindromo[inicio] == Palindromo[final]) //Vemos si las letras del final y del principio son inguales
     {
-        return EsPalindromo(Palindromo, inicio + 1, final - 1);
+        return EsPalindromo(Palindromo, inicio + 1, final - 1);//hacemos lo mismo comparando desde uno menos, vamos de mas afuera a mas adentro
     } 
-    else 
+    else //si no son iguales no es palindromo
     {
         return FALSE;
     }

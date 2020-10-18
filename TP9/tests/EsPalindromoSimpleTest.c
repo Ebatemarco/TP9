@@ -19,48 +19,45 @@
  * Simple C Test Suite
  */
 
-void TestEsPalindromoTRUE() 
+void TestEsPalindromoTRUE()//Pruebas para palabras que son palindromos 
 {
-    char* Palindromo[]={"anana","anitalavalatina","larutanatural"};
+    char* Palindromo[]={"anana","anitalavalatina","larutanatural"};/*Palabras a probar, no olvidar que EsPalindromo
+    DEBE recibir palabras en minuscula y sin espacios(las funciones de nuestro main se encargan de esto)*/
     int inicio = 0;
-    int final= 4;
     int result;
     int i;
-    int stringlong[]={4,14,12};
+    int stringlong[]={4,14,12};//largo de las palabras de Palindromo
         
     for(i=0; i<=2; i++)
     {
         inicio=0;
-        final= stringlong[i];
-        result = EsPalindromo(Palindromo[i], inicio, final);
+        result = EsPalindromo(Palindromo[i], inicio, stringlong[i]);//Vemos si el EsPalindromo funciona
         if (result==FALSE/*check result*/) 
         {
             printf("%%TEST_FAILED%% testname=testEsPalindromo (EsPalindromo Simple Test) message=error message sample\n");
-            printf("Etapa: %s\n", Palindromo[i]);
+            printf("Etapa %d: %s\n",i, Palindromo[i]);//En que palabra fallo
         }
     }
 }
 
 
-void TestEsPalindromoFALSE() 
+void TestEsPalindromoFALSE() //Prueba para palabras que no son palindromos
 {
 
-    char* Palindromo[]={"perro","gato","casa"};
+    char* Palindromo[]={"perro","gato","casa"};//Palbras que no son palindromos 
     int inicio=0;
-    int final=4;
     int result;
     int i;
-    int stringlong[3]={4,3,3};
+    int stringlong[3]={4,3,3};//Largo de las palabras
     
     for(i=0; i<=2; i++)
     {
         inicio=0;
-        final= stringlong[i];
-        result = EsPalindromo(Palindromo[i], inicio, final);
+        result = EsPalindromo(Palindromo[i], inicio, stringlong[i]);//Vemos si el EsPalindromo funciona
         if (result==TRUE/*check result*/) 
         {
-            printf("%%TEST_FAILED%% time=0 testname=testEsPalindromo (EsPalindromo Simple Test) message=error message sample\n");
-            printf("Etapa: %s\n", Palindromo[i]);
+            printf("%%TEST_FAILED%% testname=testEsPalindromo (EsPalindromo Simple Test) message=error message sample\n");
+            printf("Etapa %d: %s\n", i, Palindromo[i]);//En que parte fallo
         }
     }
 }
@@ -77,6 +74,8 @@ int main(void)
     printf("%%TEST_STARTED%%  testEsPalindromoFALSE (EsPalindromo Simple Test)\n");
     TestEsPalindromoFALSE();
     printf("%%TEST_FINISHED%% testEsPalindromoFALSE (EsPalindromo Simple Test)\n");
+    
+    printf("%%SUITE_FINISHED%% \n");
     
     return (EXIT_SUCCESS);
 }

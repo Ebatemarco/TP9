@@ -7,11 +7,11 @@
 void CamelCase (char* str, int final)
 {
     int i;
-    for(i=0; i<=final; i++)
+    for(i=0; i<final; i++)//Nos movemos letra por letra
     {
-        if(((str[i])>='A') && ((str[i])<='Z'))
+        if(((str[i])>='A') && ((str[i])<='Z'))//Si son mayusculas las convertimos en minusculas
         {
-            (str[i])=(str[i])+32;
+            (str[i]) = (str[i])+ 'a' - 'A';
         }
     }		
 }

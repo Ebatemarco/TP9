@@ -46,10 +46,12 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	${TESTDIR}/TestFiles/f1
+	${TESTDIR}/TestFiles/f1 \
+	${TESTDIR}/TestFiles/f3
 
 # Test Object Files
 TESTOBJECTFILES= \
+	${TESTDIR}/tests/CamelCaseSimpleTest.o \
 	${TESTDIR}/tests/EsPalindromoSimpleTest.o
 
 # C Compiler Flags
@@ -112,11 +114,21 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/EsPalindromoSimpleTest.o ${OBJECTFILES
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS}   
 
+${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/CamelCaseSimpleTest.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.c} -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS}   
+
 
 ${TESTDIR}/tests/EsPalindromoSimpleTest.o: tests/EsPalindromoSimpleTest.c 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/EsPalindromoSimpleTest.o tests/EsPalindromoSimpleTest.c
+
+
+${TESTDIR}/tests/CamelCaseSimpleTest.o: tests/CamelCaseSimpleTest.c 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/CamelCaseSimpleTest.o tests/CamelCaseSimpleTest.c
 
 
 ${OBJECTDIR}/CamelCase_nomain.o: ${OBJECTDIR}/CamelCase.o CamelCase.c 
@@ -189,6 +201,7 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.c
 	@if [ "${TEST}" = "" ]; \
 	then  \
 	    ${TESTDIR}/TestFiles/f1 || true; \
+	    ${TESTDIR}/TestFiles/f3 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi
