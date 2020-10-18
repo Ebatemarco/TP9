@@ -35,8 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/CamelCase.o \
 	${OBJECTDIR}/EsPalindromo.o \
 	${OBJECTDIR}/EsPalindromoNoRecursivo.o \
+	${OBJECTDIR}/Get_String.o \
 	${OBJECTDIR}/main.o
 
 # Test Directory
@@ -48,7 +50,7 @@ TESTFILES= \
 
 # Test Object Files
 TESTOBJECTFILES= \
-	${TESTDIR}/tests/EsPalindromo\ Simple\ Test.o
+	${TESTDIR}/tests/EsPalindromoSimpleTest.o
 
 # C Compiler Flags
 CFLAGS=
@@ -74,6 +76,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tp9: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tp9 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/CamelCase.o: CamelCase.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CamelCase.o CamelCase.c
+
 ${OBJECTDIR}/EsPalindromo.o: EsPalindromo.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -83,6 +90,11 @@ ${OBJECTDIR}/EsPalindromoNoRecursivo.o: EsPalindromoNoRecursivo.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EsPalindromoNoRecursivo.o EsPalindromoNoRecursivo.c
+
+${OBJECTDIR}/Get_String.o: Get_String.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Get_String.o Get_String.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -96,17 +108,29 @@ ${OBJECTDIR}/main.o: main.c
 .build-tests-conf: .build-tests-subprojects .build-conf ${TESTFILES}
 .build-tests-subprojects:
 
-${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/EsPalindromo\ Simple\ Test.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/EsPalindromoSimpleTest.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.c} -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS}   
 
 
-.NO_PARALLEL:${TESTDIR}/tests/EsPalindromo\ Simple\ Test.o
-${TESTDIR}/tests/EsPalindromo\ Simple\ Test.o: tests/EsPalindromo\ Simple\ Test.c 
+${TESTDIR}/tests/EsPalindromoSimpleTest.o: tests/EsPalindromoSimpleTest.c 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/EsPalindromo\ Simple\ Test.o tests/EsPalindromo\ Simple\ Test.c
+	$(COMPILE.c) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/tests/EsPalindromoSimpleTest.o tests/EsPalindromoSimpleTest.c
 
+
+${OBJECTDIR}/CamelCase_nomain.o: ${OBJECTDIR}/CamelCase.o CamelCase.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/CamelCase.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/CamelCase_nomain.o CamelCase.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/CamelCase.o ${OBJECTDIR}/CamelCase_nomain.o;\
+	fi
 
 ${OBJECTDIR}/EsPalindromo_nomain.o: ${OBJECTDIR}/EsPalindromo.o EsPalindromo.c 
 	${MKDIR} -p ${OBJECTDIR}
@@ -132,6 +156,19 @@ ${OBJECTDIR}/EsPalindromoNoRecursivo_nomain.o: ${OBJECTDIR}/EsPalindromoNoRecurs
 	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EsPalindromoNoRecursivo_nomain.o EsPalindromoNoRecursivo.c;\
 	else  \
 	    ${CP} ${OBJECTDIR}/EsPalindromoNoRecursivo.o ${OBJECTDIR}/EsPalindromoNoRecursivo_nomain.o;\
+	fi
+
+${OBJECTDIR}/Get_String_nomain.o: ${OBJECTDIR}/Get_String.o Get_String.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Get_String.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Get_String_nomain.o Get_String.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Get_String.o ${OBJECTDIR}/Get_String_nomain.o;\
 	fi
 
 ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.c 

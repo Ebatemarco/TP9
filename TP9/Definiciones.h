@@ -15,11 +15,10 @@
 #define FALSE 0
 #define LONG 50
 
-int get_string (char str[LONG], int num);
-
 int EsPalindromo (char* Palindromo, int inicio, int final);
 
 int EsPalindromoNoRecursivo (char* Frase, int LongFrase);
 
+int get_string (char str[LONG], int num);
 
-
+void CamelCase (char* str, int final);

@@ -23,6 +23,3 @@ int get_string (char str[LONG], int num)
         return num;
     }
 
-
-
-

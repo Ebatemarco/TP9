@@ -24,23 +24,18 @@ int main(void)
     int n_elements = 0;
     int Pal;
     int cero =0;
-    char c;
     
     
-    while((c=getchar()) != '\n')
-    {
-        if( ( (c>='A') && (c<='Z') )|| ( (c>='a') && (c<= 'z') ) )
-        {    
-        str[n_elements] = c; 
-        n_elements++;
-        }
-    }
-    n_elements--;
+    n_elements = get_string (str, n_elements);//obtenemos lo que escribe el usuario y el numero de letras
     
-    Pal = EsPalindromo(str, cero ,n_elements);
+    CamelCase (str, n_elements);//convertimos todas las letras a minuscula
+    
+    Pal = EsPalindromo(str, cero ,n_elements);//vemos si lo escrito es un palindromo
     
     //Pal = EsPalindromoNoRecursivo(str, n_elements);
     
+    
+    //Devolvemos TRUE o FALSE dependiendo de si es o no palindromo
     if(Pal==1)
         printf("TRUE");
     else

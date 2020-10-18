@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "Definiciones.h"
@@ -22,3 +23,5 @@ int EsPalindromo (char* Palindromo, int inicio, int final)
         return FALSE;
     }
 }
+
+
