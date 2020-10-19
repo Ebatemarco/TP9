@@ -29,12 +29,6 @@
                      kind="TEST">
         <itemPath>tests/EsPalindromoSimpleTest.c</itemPath>
       </logicalFolder>
-      <logicalFolder name="f3"
-                     displayName="CamelCaseSimpleTest"
-                     projectFiles="true"
-                     kind="TEST">
-        <itemPath>tests/CamelCaseSimpleTest.c</itemPath>
-      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -78,24 +72,7 @@
           <output>${TESTDIR}/TestFiles/f1</output>
         </linkerTool>
       </folder>
-      <folder path="TestFiles/f3">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f3</output>
-        </linkerTool>
-      </folder>
       <item path="main.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="tests/CamelCaseSimpleTest.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/EsPalindromoSimpleTest.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -145,24 +122,7 @@
           <output>${TESTDIR}/TestFiles/f1</output>
         </linkerTool>
       </folder>
-      <folder path="TestFiles/f3">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f3</output>
-        </linkerTool>
-      </folder>
       <item path="main.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="tests/CamelCaseSimpleTest.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="tests/EsPalindromoSimpleTest.c" ex="false" tool="0" flavor2="0">
       </item>

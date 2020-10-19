@@ -27,11 +27,13 @@ void CamelCase(char* str, int final);
 void testCamelCase() 
 {
     char* str[]={"HolaMUNDO","EsPeROUn","SoYUNGeNIO"};
-    int final[]={8,9,9};
+    int final[]={8,7,9};
     char* results[]={"holamundo","esperoun","soyungenio"};
     int i;
     
-    printf("%s",str[0]);
+    printf("%s\n",str[0]);
+    printf("%s\n",str[1]);
+    printf("%s\n",str[2]);
     
     for(i=0; i<=2;i++)
     {
