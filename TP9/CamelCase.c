@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "Definiciones.h"
+
 void CamelCase (char* str, int final)
 {
     int i;
